@@ -1,0 +1,5 @@
+{
+  "name": "RecifeMais AI Content Assistant",
+  "description": "A modern content management and AI-powered drafting tool for the RecifeMais news portal. It uses AI to automate the creation of SEO-optimized articles from press releases, aligning with the portal's specific categories and editorial voice.",
+  "requestFramePermissions": []
+}

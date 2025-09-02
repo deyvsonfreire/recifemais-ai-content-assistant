@@ -1,0 +1,1 @@
+use sempre o comando direto do vite com o caminho completo do node.js para evitar problema de versão

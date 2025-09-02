@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecifeMais AI Content Assistant</title>
+  
+  <!-- Tailwind CSS with Forms and Typography plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            // New Vibrant Palette
+            'brand-yellow-light': '#FFDC3C',
+            'brand-yellow-dark': '#FF9A24',
+            'brand-red': '#FF2230',
+            'brand-pink': '#FF0080',
+            'brand-purple': '#6F29F9',
+            'brand-blue-dark': '#0031F9',
+            'brand-cyan': '#00B1FB',
+            'brand-green': '#00BD66',
+            
+            // Legacy colors (mapped to new ones or kept for compatibility)
+            'recife-red': '#FF2230',
+            'recife-orange': '#FF9A24',
+            'recife-ocean': '#00B1FB',
+            'recife-mangrove': '#00BD66',
+            'recife-creative': '#6F29F9',
+            'recife-sun': '#FFDC3C',
+
+            // Updated Grays for consistency
+            'gray-900': '#101828',
+            'gray-800': '#1D2939',
+            'gray-700': '#344054',
+            'gray-600': '#475467',
+            'gray-500': '#667085',
+            'gray-400': '#98A2B3',
+            'gray-300': '#D0D5DD',
+            'gray-200': '#EAECF0',
+            'gray-100': '#F2F4F7',
+            'gray-50': '#F9FAFB',
+          },
+          typography: (theme) => ({
+            DEFAULT: {
+              css: {
+                '--tw-prose-body': theme('colors.gray[700]'),
+                '--tw-prose-headings': theme('colors.gray[900]'),
+                '--tw-prose-strong': theme('colors.gray[800]'),
+                 '--tw-prose-a': {
+                    color: theme('colors.brand-blue-dark'),
+                    '&:hover': {
+                      color: theme('colors.brand-cyan'),
+                    },
+                 },
+              },
+            },
+          }),
+        },
+      },
+    }
+  </script>
+  <!-- Quill WYSIWYG Editor -->
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+  <!-- Cropper.js for Image Editing -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+  <!-- Supabase Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.16.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.1.1"
+  }
+}
+</script>
+
+<style>
+  /* Base input styles for high contrast and consistency */
+  select,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="url"],
+  input[type="date"],
+  textarea {
+    background-color: #FFFFFF;
+    border-color: #D0D5DD; /* gray-300 */
+    color: #1D2939; /* gray-800 */
+    --tw-ring-color: #6F29F9; /* brand-purple */
+  }
+  select:disabled,
+  input:disabled,
+  textarea:disabled {
+    background-color: #F2F4F7; /* gray-100 */
+    cursor: not-allowed;
+    color: #98A2B3; /* gray-400 */
+  }
+  .dark select,
+  .dark input,
+  .dark textarea {
+     background-color: #1D2939;
+     border-color: #475467;
+     color: #F9FAFB;
+  }
+  
+  /* Custom Quill Editor Styles for better contrast and feel */
+  .ql-toolbar {
+    border-top-left-radius: 0.5rem; /* rounded-lg */
+    border-top-right-radius: 0.5rem;
+    border-color: #D0D5DD !important; /* gray-300 */
+    background-color: #F9FAFB; /* gray-50 */
+  }
+  .ql-container {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-color: #D0D5DD !important; /* gray-300 */
+    background-color: #FFFFFF;
+  }
+  .ql-editor {
+    font-family: 'Inter', sans-serif;
+    color: #101828; /* gray-900 */
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 250px;
+  }
+  .ql-editor.ql-blank::before {
+    color: #667085 !important; /* gray-500 */
+    font-style: normal !important;
+  }
+</style>
+
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <div id="toast-portal"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
